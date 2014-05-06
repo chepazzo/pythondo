@@ -36,11 +36,11 @@ Usage
 
 script:
 
-#!/opt/bcs/bin/perl
+#!/usr/bin/env perl
 
 use PythonDo;
 
-my $devname = 'twhite1-dr4-sw0.net.aol.com';
+my $devname = 'myswitch.net.com';
 my $cmd = 'show version';
 
 my $do = new PythonDo({'class'=>'docommand.do.Do','args'=>{'devices'=>[$devname],'commands'=>[$cmd]}});
@@ -59,8 +59,8 @@ foreach my $dev (keys(%$data)) {
 
 Result:
 
-# twhite1-dr4-sw0.net.aol.com #
-twhite1-dr4-sw0.net.aol.com> show version
+# myswitch.net.com #
+myswitch.net.com> show version
   SW: Version 03.2.00jT1e0 Copyright (c) 1996-2006 Foundry Networks, Inc.
       Compiled on Feb 07 2008 at 15:03:54 labeled as FWXS03200j
       (2313150 bytes) from Primary \NetResources\FWXS03200j.bin
@@ -85,16 +85,16 @@ The system : started=cold start
 Breakdown
 ---------
 
-my $do = new PythonDo({'lib'=>'/opt/lib/py','class'=>'docommand.do.Do','args'=>{'debug':\0,'devices'=>['twhite1-dr4-sw0.net.aol.com'],'commands'=>['show version']}});
+my $do = new PythonDo({'lib'=>'/usr/local/lib/py','class'=>'docommand.do.Do','args'=>{'debug':\0,'devices'=>['myswitch.net.com'],'commands'=>['show version']}});
 
-executes: /opt/bin/pydo.py '{"lib":"/opt/lib/py","class":"docommand.do.Do","method":"new","args":{"debug":false,"commands":["show version"],"devices":["twhite1-dr4-sw0.net.aol.com"]},"action":"method"}'
+executes: /usr/local/bin/pydo.py '{"lib":"/usr/local/lib/py","class":"docommand.do.Do","method":"new","args":{"debug":false,"commands":["show version"],"devices":["myswitch.net.com"]},"action":"method"}'
 
 implements:
 
 import sys
-sys.path.append("/opt/lib/py")
+sys.path.append("/usr/local/lib/py")
 import docommand.do
-n = docommand.do.Do(debug=False,commands=["show version"],devices=["twhite1-dr4-sw0.net.aol.com"])
+n = docommand.do.Do(debug=False,commands=["show version"],devices=["myswitch.net.com"])
 with open('/tmp.pydo.'+instid+'.data','w') as fw:
   pickle.dump(n,fw,-1)
 
@@ -121,7 +121,7 @@ reply:
 
 $do->run();
 
-executes: /opt/bin/pydo.py '{"instid":"a682645da85e79e4","class":"docommand.do.Do","method":"run","args":[],"action":"method"}'
+executes: /usr/local/bin/pydo.py '{"instid":"a682645da85e79e4","class":"docommand.do.Do","method":"run","args":[],"action":"method"}'
 
 implements:
 
@@ -142,7 +142,7 @@ reply:
 
 my $data = $do->data;
 
-executes: /opt/bin/pydo.py '{"instid":"a682645da85e79e4","class":"docommand.do.Do","action":"get","prop":"data","method":"DUMMY"}'
+executes: /usr/local/bin/pydo.py '{"instid":"a682645da85e79e4","class":"docommand.do.Do","action":"get","prop":"data","method":"DUMMY"}'
 
 implements:
 
@@ -159,12 +159,12 @@ reply:
         "stat": "ok", 
         "data": {
 
-            "twhite1-dr4-sw0.net.aol.com": [
+            "myswitch.net.com": [
 
                 {
 
                     "cmd": "show version", 
-                    "dev": "twhite1-dr4-sw0.net.aol.com", 
+                    "dev": "myswitch.net.com", 
                     "out": " SW: Version 03.2.00jT1e0 Copyright (c) 1996-2006 Foundry Networks, Inc.\n Compiled on Feb 07 2008 at 15:03:54 labeled as FWXS03200j\n (2313150 bytes) from Primary \\NetResources\\FWXS03200j.bin\n BootROM: Version 03.0.01T1e5 (FEv2)\n HW: Stackable FWSX448\n==========================================================================\n Serial #: FL04060573\n P-ASIC 0: type 00D1, rev D2\n P-ASIC 1: type 00D1, rev D2\n P-ASIC 2: type 00D1, rev D2\n P-ASIC 3: type 00D1, rev D2\n==========================================================================\n 300 MHz Power PC processor 8245 (version 129/1014) 66 MHz bus\n 512 KB boot flash memory\n16384 KB code flash memory\n 128 MB DRAM\nThe system uptime is 520 days 7 hours 22 minutes 36 seconds \nThe system started at 08:27:14 GMT+00 Mon Nov 30 2009\n\nThe system : started=cold start \n\n" 
 
                 } 
@@ -179,7 +179,7 @@ On Perl exit:
 
     (this automatically deletes the pickle file that holds the instance data) 
 
-executes: /opt/bin/pydo.py '{"instid":"a682645da85e79e4","class":"docommand.do.Do","action":"cleanup","method":"DUMMY"}'
+executes: /usr/local/bin/pydo.py '{"instid":"a682645da85e79e4","class":"docommand.do.Do","action":"cleanup","method":"DUMMY"}'
 
 reply:
 
